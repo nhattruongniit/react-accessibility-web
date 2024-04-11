@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import PlusIcon from "./assets/plus.png";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+
+      <h1>Accessibility Web</h1>
+
+      {/* keyboard compatibility testing */}
+      {/* 
+        What happens when you add a button html element ?
+      */}
+      {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      </div> */}
+
+      {/* text to speech testing */}
+      <div className="card">
+        <div
+          tabIndex={0}
+          role="button"
+          onKeyUp={() => setCount((count) => count + 1)}
+          onClick={() => setCount((count) => count + 1)}
+        >
+          <img src={PlusIcon} alt="plus" />
+        </div>
+        <div> count is {count}</div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
